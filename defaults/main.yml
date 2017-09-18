@@ -1,0 +1,8 @@
+---
+macos_git_repos: {
+  # Containment directory for pulled git repositories
+  containment: "{{ ansible_env.HOME + '/workspace' }}",
+
+  # Git repositories to pull
+  repositories: []
+}

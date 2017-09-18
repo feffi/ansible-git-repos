@@ -1,0 +1,17 @@
+---
+- name: Create repository containment
+  file:
+    path: "{{ macos_git_repos.containment }}"
+    state: directory
+    mode: 0700
+    owner: "{{ ansible_ssh_user }}"
+  register: macos_git_repos_touch_log
+  changed_when: macos_git_repos_touch_log.diff.before.state is defined and macos_git_repos_touch_log.diff.before.state != "directory"
+
+- name: Cloning git repositories to containment
+  git:
+    repo: "{{ item.url }}"
+    dest: "{{ macos_git_repos.containment + '/' + item.name }}"
+    update: yes
+  with_items: "{{ macos_git_repos.repositories }}"
+  when: macos_git_repos.repositories
