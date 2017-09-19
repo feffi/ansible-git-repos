@@ -3,8 +3,8 @@
   connection: local
   vars:
     DEBUG: true
-    git_repos:
+    macos_git_repos:
       containment: "{{ ansible_env.HOME + '/workspace' }}"
       repositories: []
   roles:
-    - { role: ansible-git-repos }
+    - { role: ansible-macos-git-repos }
