@@ -6,7 +6,7 @@
     mode: 0700
     owner: "{{ ansible_ssh_user }}"
   register: macos_git_repos_touch_log
-  changed_when: macos_git_repos_touch_log.diff.before.state is defined and macos_git_repos_touch_log.diff.before.state != "directory"
+  #changed_when: macos_git_repos_touch_log.diff.before.state is defined and macos_git_repos_touch_log.diff.before.state != "directory"
 
 - name: Cloning git repositories to containment
   git:

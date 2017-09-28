@@ -21,6 +21,8 @@ dependencies:
         packages: [
           { name: "git" }
         ],
-        taps: []
+        taps: [],
+        casks: [],
+        brews: []
       }
     }
