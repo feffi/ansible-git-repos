@@ -1,17 +1,17 @@
 ---
 - name: Create repository containment
   file:
-    path: "{{ macos_git_repos.containment }}"
+    path: "{{ git_repos.containment }}"
     state: directory
     mode: 0700
     owner: "{{ ansible_user_id }}"
-  register: macos_git_repos_touch_log
-  #changed_when: macos_git_repos_touch_log.diff.before.state is defined and macos_git_repos_touch_log.diff.before.state != "directory"
+  register: git_repos_touch_log
+  #changed_when: git_repos_touch_log.diff.before.state is defined and git_repos_touch_log.diff.before.state != "directory"
 
 - name: Cloning git repositories to containment
   git:
     repo: "{{ item.url }}"
-    dest: "{{ macos_git_repos.containment + '/' + item.name }}"
+    dest: "{{ git_repos.containment + '/' + item.name }}"
     update: yes
-  with_items: "{{ macos_git_repos.repositories }}"
-  when: macos_git_repos.repositories
+  with_items: "{{ git_repos.repositories }}"
+  when: git_repos.repositories

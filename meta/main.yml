@@ -10,10 +10,7 @@ galaxy_info:
         - all
   galaxy_tags:
     - system
-    - osx
-    - macos
     - config
-    - macos
     - git
 dependencies:
   - { role: feffi.macos-homebrew,
