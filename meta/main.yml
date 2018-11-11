@@ -12,4 +12,11 @@ galaxy_info:
     - system
     - config
     - git
-dependencies: []
+dependencies:
+  - { role: ansible-pacman,
+        ansible_pacman: {
+        install: [
+          "git"
+        ]
+      }
+    }

@@ -5,6 +5,7 @@
     DEBUG: true
     ansible_git_repos:
       containment: "{{ ansible_env.HOME + '/workspace' }}"
+      owner: "feffi"
       repositories: []
   roles:
     - { role: ansible-git-repos }

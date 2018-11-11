@@ -29,12 +29,14 @@ Just add the role to your ``requirements.yml`` file:
 All role based variables are listed below, along with default values:
 
 ```yaml
-ansible_git_repos:
+ansible_git_repos: {
   # Containment directory for pulled git repositories
-  containment: "{{ ansible_env.HOME + '/workspace' }}"
-
+  containment: "{{ ansible_env.HOME + '/workspace' }}",
+  # The owner of the repositories
+  owner: "feffi",
   # Git repositories to pull
   repositories: []
+}
 ```
 
 ## Dependencies
@@ -46,8 +48,9 @@ None.
 ```yaml
     - hosts: all
       vars:
-        git_repos:
+        ansible_git_repos:
           containment: "{{ ansible_env.HOME + '/workspace' }}"
+          owner: "feffi"
           repositories: []
       roles:
         - { role: ansible-git-repos }
@@ -61,6 +64,7 @@ Or with local parameters:
         - { role: ansible-git-repos,
             ansible_git_repos: {
               containment: "{{ ansible_env.HOME + '/workspace' }}",
+              owner: "feffi",
               repositories: []
             }
           }

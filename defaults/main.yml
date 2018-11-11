@@ -1,7 +1,9 @@
 ---
-ansible_git_repos:
+ansible_git_repos: {
   # Containment directory for pulled git repositories
-  containment: "{{ ansible_env.HOME + '/workspace' }}"
-
+  containment: "{{ lookup('env','HOME') }}/workspace",
+  # The owner of the repositories
+  owner: "feffi",
   # Git repositories to pull
   repositories: []
+}
