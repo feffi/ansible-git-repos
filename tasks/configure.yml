@@ -1,7 +1,7 @@
 ---
 - name: Create repository containment
   file:
-    path: "{{ git_repos.containment }}"
+    path: "{{ ansible_git_repos.containment }}"
     state: directory
     mode: 0700
     owner: "{{ ansible_user_id }}"
@@ -11,7 +11,7 @@
 - name: Cloning git repositories to containment
   git:
     repo: "{{ item.url }}"
-    dest: "{{ git_repos.containment + '/' + item.name }}"
+    dest: "{{ ansible_git_repos.containment + '/' + item.name }}"
     update: yes
-  with_items: "{{ git_repos.repositories }}"
-  when: git_repos.repositories
+  with_items: "{{ ansible_git_repos.repositories }}"
+  when: ansible_git_repos.repositories

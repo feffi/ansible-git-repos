@@ -7,6 +7,7 @@ Ansible role to manage git repositories.
 ## Requirements
 
 - Ansible 2.3
+- git
 
 ### ansible.cfg
 
@@ -20,7 +21,7 @@ Just add the role to your ``requirements.yml`` file:
 
 ```yaml
 - src: https://github.com/feffi/ansible-git-repos.git
-  name: feffi.git-repos
+  name: ansible-git-repos
 ```
 
 ## Role Variables
@@ -28,7 +29,7 @@ Just add the role to your ``requirements.yml`` file:
 All role based variables are listed below, along with default values:
 
 ```yaml
-git_repos:
+ansible_git_repos:
   # Containment directory for pulled git repositories
   containment: "{{ ansible_env.HOME + '/workspace' }}"
 
@@ -49,7 +50,7 @@ None.
           containment: "{{ ansible_env.HOME + '/workspace' }}"
           repositories: []
       roles:
-        - { role: feffi.git-repos }
+        - { role: ansible-git-repos }
 ```
 
 Or with local parameters:
@@ -57,8 +58,8 @@ Or with local parameters:
 ```yaml
     - hosts: all
       roles:
-        - { role: feffi.git-repos,
-            git_repos: {
+        - { role: ansible-git-repos,
+            ansible_git_repos: {
               containment: "{{ ansible_env.HOME + '/workspace' }}",
               repositories: []
             }

@@ -3,7 +3,7 @@
   connection: local
   vars:
     DEBUG: true
-    git_repos:
+    ansible_git_repos:
       containment: "{{ ansible_env.HOME + '/workspace' }}"
       repositories: []
   roles:

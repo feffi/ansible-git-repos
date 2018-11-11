@@ -1,5 +1,5 @@
 ---
-git_repos:
+ansible_git_repos:
   # Containment directory for pulled git repositories
   containment: "{{ ansible_env.HOME + '/workspace' }}"
 
