@@ -50,7 +50,9 @@ None.
       vars:
         ansible_git_repos:
           containment: "{{ ansible_env.HOME + '/workspace' }}"
-          owner: "feffi"
+          owner:
+            name: "feffi"
+            group: "feffi"
           repositories: []
       roles:
         - { role: ansible-git-repos }
@@ -64,7 +66,10 @@ Or with local parameters:
         - { role: ansible-git-repos,
             ansible_git_repos: {
               containment: "{{ ansible_env.HOME + '/workspace' }}",
-              owner: "feffi",
+              owner: {
+                name: "feffi",
+                group: "feffi"
+              },
               repositories: []
             }
           }

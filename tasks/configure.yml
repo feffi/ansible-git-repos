@@ -1,10 +1,11 @@
 ---
-- name: Create repository containment
+- name: "Create repository containment for {{ ansible_git_repos.owner.name }}:{{ ansible_git_repos.owner.group }}"
   file:
     path: "{{ ansible_git_repos.containment }}"
     state: directory
     mode: 0700
-    owner: "{{ ansible_git_repos.owner }}"
+    owner: "{{ ansible_git_repos.owner.name }}"
+    group: "{{ ansible_git_repos.owner.group }}"
   register: git_repos_touch_log
   #changed_when: git_repos_touch_log.diff.before.state is defined and git_repos_touch_log.diff.before.state != "directory"
 
@@ -15,3 +16,12 @@
     update: yes
   with_items: "{{ ansible_git_repos.repositories }}"
   when: ansible_git_repos.repositories
+
+- name: "Set containment access rights to {{ ansible_git_repos.owner.name }}:{{ ansible_git_repos.owner.group }}"
+  file:
+    path: "{{ ansible_git_repos.containment }}"
+    state: directory
+    mode: 0700
+    owner: "{{ ansible_git_repos.owner.name }}"
+    group: "{{ ansible_git_repos.owner.group }}"
+    recurse: true

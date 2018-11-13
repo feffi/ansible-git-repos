@@ -3,7 +3,10 @@ ansible_git_repos: {
   # Containment directory for pulled git repositories
   containment: "{{ lookup('env','HOME') }}/workspace",
   # The owner of the repositories
-  owner: "feffi",
+  owner: {
+    name: "feffi",
+    group: "feffi"
+  },
   # Git repositories to pull
   repositories: []
 }
